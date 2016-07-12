@@ -1,0 +1,1 @@
+ALTER TABLE `transaction3_db` ADD CONSTRAINT `form_id` FOREIGN KEY (`form_id`) REFERENCES `client_feedback_app_db`.`feedbackform_db`(`formID`) ON DELETE RESTRICT ON UPDATE RESTRICT;

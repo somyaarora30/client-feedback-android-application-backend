@@ -1,0 +1,119 @@
+<?PHP
+include_once("connection.php");
+
+session_start();
+//if($_SERVER["REQUEST_METHOD"] == "POST")
+if(isset($_POST['event_date']) && isset($_POST['event_location']) && isset ($_POST['organisation_name']) && isset ($_POST['client_name']) && isset ($_POST['client_type']) )	
+{
+
+$client_name= mysqli_real_escape_string($con,$_POST['client_name']);
+$client_type= mysqli_real_escape_string($con,$_POST['client_type']);
+$event_date= mysqli_real_escape_string($con,$_POST['event_date']); 
+$organisation_name= mysqli_real_escape_string($con,$_POST['organisation_name']);
+$event_location= mysqli_real_escape_string($con,$_POST['event_location']);
+// $score1= mysqli_real_escape_string($con,$_POST['score1']);
+// $score2= mysqli_real_escape_string($con,$_POST['score2']);
+// $score3= mysqli_real_escape_string($con,$_POST['score3']);
+// $score4= mysqli_real_escape_string($con,$_POST['score4']);
+// $score5= mysqli_real_escape_string($con,$_POST['score5']);
+// $score6= mysqli_real_escape_string($con,$_POST['score6']);
+// $score7= mysqli_real_escape_string($con,$_POST['score7']);
+// $score8= mysqli_real_escape_string($con,$_POST['score8']);
+// $score9= mysqli_real_escape_string($con,$_POST['score9']);
+// $score10= mysqli_real_escape_string($con,$_POST['score10']);
+// $answer1= mysqli_real_escape_string($con,$_POST['answer1']);
+// $answer2= mysqli_real_escape_string($con,$_POST['answer2']);
+// $answer3= mysqli_real_escape_string($con,$_POST['answer3']);
+// $answer4= mysqli_real_escape_string($con,$_POST['answer4']);
+// $answer5= mysqli_real_escape_string($con,$_POST['answer5']);
+// $comments= mysqli_real_escape_string($con,$_POST['comments']);
+
+$login_id= mysqli_real_escape_string($con,$_POST['login_id']);
+$lid = (int)$login_id;
+
+// $query = "INSERT INTO transaction_db (client_name,client_type,event_date,organisation_name,event_location,score1,score2,score3,score4,score5,score6,score7,score8,score9,score10,answer1,answer2,answer3,answer4,answer5,comments,login_id) 
+// VALUES ('$client_name','$client_type','$event_date','$organisation_name','$event_location','$score1','$score2','$score3','$score4','$score5','$score6','$score7','$score8','$score9','$score10','$answer1','$answer2','$answer3','$answer4','$answer5','$comments',$login_id')";
+
+$query = "INSERT INTO transaction_db (client_name,client_type,event_date,organisation_name,event_location,login_id) 
+VALUES ('$client_name','$client_type','$event_date','$organisation_name','$event_location','$login_id')";
+
+
+
+ if(mysqli_query($con,$query)){
+	 $data['success'] = 1;
+     echo json_encode($data);
+     }
+    else{
+		$data['success'] = 0;
+    echo json_encode($data);
+    }
+}
+mysqli_close($con);
+?>
+
+
+
+I
+<html>
+   
+   <head>
+      <title>client welcome Page</title>
+      
+      <style type = "text/css">
+         body {
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:14px;
+         }
+         
+         label {
+            font-weight:bold;
+            width:100px;
+            font-size:14px;
+         }
+         
+         .box {
+            border:#666666 solid 1px;
+         }
+      </style>
+      
+   </head>
+   
+   <body bgcolor = "#FFFFFF">
+	
+      <div align = "center">
+         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+				
+            <div style = "margin:30px">
+               
+               <form action = "" method = "post">
+                  <label>name  :</label><input type = "text" name = "name" class = "box"/><br /><br />
+                  <label>type  :</label><input type = "text" name = "type" class = "box" /><br/><br />
+				  <label>date  :</label><input type = "text" name = "date" class = "box" /><br/><br />
+				  <label>org name  :</label><input type = "text" name = "org name" class = "box" /><br/><br />
+				  <label>location  :</label><input type = "text" name = "location" class = "box" /><br/><br />
+                  <input type = "submit" value = " Submit "/><br />
+               </form>
+               
+               <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>
+					
+            </div>
+				
+         </div>
+			
+      </div>
+
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

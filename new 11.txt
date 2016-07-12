@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>form testing</title>
+</head>
+<body>
+   <form action="<?PHP $_PHP_SELF ?>" method="post">
+        event_date<input type="text" name="event_date" placeholder="Event date"/>
+		event_location<input type="text" name="event_location" placeholder="location"/>
+		organisation_name<input type="text" name="organisation_name" placeholder="orgname"/>
+		<input type="submit" value="insert"/>
+   
+   </form>
+
+</body>
+</html>
