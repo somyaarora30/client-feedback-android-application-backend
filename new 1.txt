@@ -1,2 +1,0 @@
-This project is about CLIENT FEEDBACK developed using core java and XML and Android Studio as IDE.
-
